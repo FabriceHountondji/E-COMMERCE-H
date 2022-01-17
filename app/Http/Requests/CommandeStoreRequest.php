@@ -13,7 +13,7 @@ class CommandeStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class CommandeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'quantiteCommande' => 'required|integer',
+            'cliend_id' => 'required|integer',
+            'produit_id' => 'required|integer',
         ];
     }
 }

@@ -17,7 +17,7 @@ class CreateFacturesTable extends Migration
             $table->increments('id');
             $table->integer('solde');
             $table->unsignedInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('users');
+            $table->foreign('client_id')->references('id')->on('acteurs');
             $table->timestamps();
         });
     }

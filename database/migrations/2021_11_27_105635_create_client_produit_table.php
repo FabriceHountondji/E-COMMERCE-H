@@ -15,8 +15,12 @@ class CreateClientProduitTable extends Migration
     {
         Schema::create('client_produit', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('quantite');
-            $table->date('date');
+            $table->integer('quantiteCommande');
+            $table->date('dateCommande');
+            $table->unsignedInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('acteurs');
+            $table->unsignedInteger('produit_id');
+            $table->foreign('produit_id')->references('id')->on('produits');
         });
     }
 

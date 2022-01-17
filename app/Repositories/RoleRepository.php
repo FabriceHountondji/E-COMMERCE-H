@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\\Models\\Role; 
+use App\Models\Role; 
 
 class RoleRepository
 {

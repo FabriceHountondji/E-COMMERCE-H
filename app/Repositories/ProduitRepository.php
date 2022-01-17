@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\\Models\\Produit; 
+use App\Models\Produit; 
 
 class ProduitRepository
 {

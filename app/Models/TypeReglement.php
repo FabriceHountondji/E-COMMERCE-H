@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TypeReglement extends Model
 {
-    public $fillable = ['label'];
+    public $fillable = ['name','description'];
 
     public function reglement(){
         return $this->belongsTo('App\Models\Reglement');

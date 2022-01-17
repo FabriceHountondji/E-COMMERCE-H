@@ -15,8 +15,12 @@ class CreateLivreurClientTable extends Migration
     {
         Schema::create('livreur_client', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('statut');
-            $table->date('date');
+            $table->string('statutLivraison');
+            $table->date('dateLivraison');
+            $table->unsignedInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('acteurs');
+            $table->unsignedInteger('livreur_id');
+            $table->foreign('livreur_id')->references('id')->on('acteurs');
         });
     }
 

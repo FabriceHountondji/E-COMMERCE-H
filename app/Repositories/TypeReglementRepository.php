@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\\Models\\TypeReglement; 
+use App\Models\TypeReglement; 
 
 class TypeReglementRepository
 {

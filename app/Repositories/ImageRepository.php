@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\\Models\\Image; 
+use App\Models\Image; 
 
 class ImageRepository
 {

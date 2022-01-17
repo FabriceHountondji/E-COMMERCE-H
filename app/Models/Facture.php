@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Facture extends Model
 {
-    public $fillable = ['solde'];
+    public $fillable = ['solde','dateFacture','client_id'];
 
-    public function user(){
-        return $this->belongsTo('App\Models\User');
+    public function acteur(){
+        return $this->belongsTo('App\Models\Acteur');
     }
 }

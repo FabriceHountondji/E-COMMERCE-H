@@ -16,7 +16,9 @@ class CreateReglementsTable extends Migration
         Schema::create('reglements', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('solde');
-            $table->date('date');
+            $table->date('dateReglement');
+            $table->unsignedInteger('facture_id');
+            $table->foreign('facture_id')->references('id')->on('factures');
         });
     }
 

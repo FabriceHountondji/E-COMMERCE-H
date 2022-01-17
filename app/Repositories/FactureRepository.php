@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\\Models\\Facture; 
+use App\Models\Facture; 
 
 class FactureRepository
 {

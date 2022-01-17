@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categorie extends Model
 {
-    public $fillable = ['label'];
+    public $fillable = ['name','description'];
 
     public function produit(){
         return $this->belongsToMany('App\Models\Produit');

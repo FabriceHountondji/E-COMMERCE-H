@@ -13,7 +13,7 @@ class FactureStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class FactureStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'solde' => 'required|integer',
+            'cliend_id' => 'required|integer',
         ];
     }
 }

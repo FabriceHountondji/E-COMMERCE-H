@@ -13,7 +13,7 @@ class ReglementStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class ReglementStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'solde' => 'required|integer',
+            'facture_id' => 'required|integer',
         ];
     }
 }

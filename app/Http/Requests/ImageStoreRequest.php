@@ -13,7 +13,7 @@ class ImageStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class ImageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'url' => 'required|string',
+            'description' => 'required|string',
+            'produit_id' => 'required|integer',
         ];
     }
 }
