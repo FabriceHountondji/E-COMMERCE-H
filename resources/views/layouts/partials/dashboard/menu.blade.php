@@ -127,21 +127,26 @@
                 <li class="app-sidebar__heading">Mon compte</li>
                 <li>
                     <a href="#">
-                        <i class="metismenu-icon pe-7s-rocket"></i>Acteurs
+                        <i class="metismenu-icon pe-7s-rocket"></i>Informations
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
                         <li>
                             <a href="#"  class="" >
-                                <i class="metismenu-icon"></i>Ajouter un acteur
+                                <i class="metismenu-icon"></i>Bilan informations
                             </a>
                         </li>
                         <li>
                             <a href="#" >
-                                <i class="metismenu-icon"></i>Liste des acteurs
+                                <i class="metismenu-icon"></i>Modifier mes informations
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a href="{{ route('reset.index') }}" >
+                        <i class="metismenu-icon pe-7s-graph"></i>Modifier mot de passe
+                    </a>
                 </li>
             </ul>
             <ul class="vertical-nav-menu">

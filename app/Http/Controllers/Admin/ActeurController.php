@@ -83,7 +83,6 @@ class ActeurController extends Controller
         $fonctions = $this->fonctionRepo->all();
 
         return view('acteurs.edit',compact('fonction','fonctions','acteur'));
-
     }
 
     /**

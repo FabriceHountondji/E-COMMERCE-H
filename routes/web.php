@@ -15,7 +15,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\CaissierController;
 use App\Http\Controllers\Admin\LivreurController;
 use App\Http\Controllers\Admin\ProduitController;
-
+use App\Http\Controllers\Auth\ResetPasswordController;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,9 @@ use App\Http\Controllers\Admin\ProduitController;
 Route::get('/login', [LoginController::class , 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LogoutController::class,'logout'])->name('logout');
+
+Route::resource('reset', ResetPasswordController::class);
+
 
 
 Route::get('/', function () {return view('index'); });
