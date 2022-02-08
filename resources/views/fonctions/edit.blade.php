@@ -6,7 +6,7 @@
     <div class="main-card mb-3 card">
         <div class="card-body">
             <h5 class="card-title">Formulaire de modification fonctions</h5>
-            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="route('fonctions.update', $fonction->id)">
+            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="{{ route('fonctions.update', $fonction->id) }}">
                 @csrf
                 {{ method_field('PUT') }}
 

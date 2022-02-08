@@ -6,20 +6,20 @@
     <div class="main-card mb-3 card">
         <div class="card-body">
             <h5 class="card-title">Formulaire de modification produits</h5>
-            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="route('produits.update', $produit->id)">
+            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="{{ route('produits.update', $produit->id) }}">
                 @csrf
                 {{ method_field('PUT') }}
 
                 <div class="form-group">
                     <label for="firstname">Image principale</label>
                     <div>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Mom du produit" />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Mom du produit" value="{{ old('name') ? old('name') : $produit->name }}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lastname">Nom</label>
                     <div>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Nom du produit" />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nom du produit" value="{{ old('name') ? old('name') : $produit->name }}"/>
                     </div>
                 </div>
                 <div class="position-relative form-group">
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for="phone">Prix</label>
                     <div>
-                        <input type="text" class="form-control" id="prix" name="prix" placeholder="Prix du produit" />
+                        <input type="text" class="form-control" id="prix" name="prix" placeholder="Prix du produit" value="{{ old('prix') ? old('prix') : $produit->prix }}" />
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                     <label for="exampleSelect" class="">Catégorie</label>
                     <select name="categorie_id" id="exampleSelect" class="form-control">
                         @foreach ($categories as $categorie)
-                            <option value="{{ $categorie->id }}"> {{ $categorie->name }}</option>
+                            <option value="{{ $categorie->id }}"> {{ $produit->categorie == '$categorie->id' ? 'selected' : '' }}</option>
                         @endforeach
                     </select>
                 </div>

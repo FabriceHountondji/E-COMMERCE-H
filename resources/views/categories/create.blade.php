@@ -10,7 +10,7 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="lastname">Catégorie</label>
+                    <label for="name">Catégorie</label>
                     <div>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Entrer la catégorie" />
                     </div>

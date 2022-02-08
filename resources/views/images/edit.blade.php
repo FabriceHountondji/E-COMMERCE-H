@@ -6,7 +6,7 @@
     <div class="main-card mb-3 card">
         <div class="card-body">
             <h5 class="card-title">Formulaire de modification d'image</h5>
-            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="route('images.update', $image->id)">
+            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="{{ route('images.update', $image->id) }}">
                 @csrf
                 {{ method_field('PUT') }}
 
@@ -26,7 +26,7 @@
                     <label for="exampleSelect" class="">Produit correspondant</label>
                     <select name="produit_id" id="exampleSelect" class="form-control">
                         @foreach ($produits as $produit)
-                            <option value="{{ $produit->id }}"> {{ $produit->name }}</option>
+                            <option value="{{ $produit->id }}">{{ $image->produit == '$produit->id' ? 'selected' : '' }}</option>
                         @endforeach
                     </select>
                 </div>

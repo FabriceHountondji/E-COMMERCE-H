@@ -15,7 +15,7 @@
                     </div>
                 </div> -->
                 <div class="form-group">
-                    <label for="firstname">Nom</label>
+                    <label for="name">Nom</label>
                     <div>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Désignation du produit" />
                     </div>
