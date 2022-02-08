@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\ActeurStoreRequest;
 use App\Http\Requests\ActeurUpdateRequest;
+
 use App\Repositories\ActeurRepository;
+use App\Repositories\UserRepository;
 use App\Repositories\FonctionRepository;
 
 class ActeurController extends Controller
@@ -21,11 +23,13 @@ class ActeurController extends Controller
 
     protected $acteurRepo;
     protected $fonctionRepo;
+    protected $userRepo;
 
-    public function __construct(ActeurRepository $acteurRepo,FonctionRepository $fonctionRepo)
+    public function __construct(ActeurRepository $acteurRepo,FonctionRepository $fonctionRepo,UserRepository $userRepo)
     {
         $this->acteurRepo = $acteurRepo;
         $this->fonctionRepo = $fonctionRepo;
+        $this->userRepo = $userRepo;
     }
 
     public function index()
@@ -42,7 +46,8 @@ class ActeurController extends Controller
     public function create()
     {
         $fonctions = $this->fonctionRepo->getlatest();
-        return view('acteurs.create',compact('fonctions'));
+        $users = $this->userRepo->getlatest();
+        return view('acteurs.create',compact('fonctions','users'));
     }
 
     /**
@@ -54,9 +59,8 @@ class ActeurController extends Controller
     public function store(ActeurStoreRequest $request)
     {
         $acteur = $this->acteurRepo->makeStore($request->validated());
-        $acteurs = $this->acteurRepo->all();
 
-        return redirect()->route('acteurs.index',compact('acteurs'))->with('success','Acteur enregistré avec succès.');
+        return redirect()->route('acteurs.index')->with('success','Acteur enregistré avec succès.');
     }
 
     /**

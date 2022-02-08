@@ -26,9 +26,8 @@ class ActeurUpdateRequest extends FormRequest
         return [
             'lastname' => 'required|string',
             'firstname' => 'required|string',
-            'chef' => 'required|string',
             'email' => 'required|email|unique:acteurs',
-            'phone' => 'required|unique:acteurs',
+            'phone' => 'required',
             'address' => 'required',
             'sexe' => 'required',
             'fonction_id' => 'integer',

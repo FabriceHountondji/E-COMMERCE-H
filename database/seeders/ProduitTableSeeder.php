@@ -14,6 +14,19 @@ class ProduitTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('produits')->insert([
+            [
+                'name' => 'chemise deux tons',
+                'description' => 'chemise avec couleur rouge et verte',
+                'prix' => '6000',
+                'categorie_id' => '1',
+            ],[
+                'name' => 'Baskets nike',
+                'description' => 'chaussures de grande marque',
+                'prix' => '15000',
+                'categorie_id' => '2',
+            ],
+
+        ]);
     }
 }

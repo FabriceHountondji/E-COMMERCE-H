@@ -28,7 +28,6 @@ class ProduitUpdateRequest extends FormRequest
             'description' => 'required|string',
             'prix' => 'required|integer',
             'categorie_id' => 'required|integer',
-            'fournisseur_id' => 'required|integer',
         ];
     }
 }

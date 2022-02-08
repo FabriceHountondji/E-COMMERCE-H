@@ -25,7 +25,8 @@ class FonctionController extends Controller
 
     public function index()
     {
-        return view('fonctions.index');
+        $fonctions = $this->fonctionRepo->getlatest();
+        return view('fonctions.index',compact('fonctions'));
     }
 
     /**

@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\ProduitStoreRequest;
 use App\Http\Requests\ProduitUpdateRequest;
+
 use App\Repositories\ProduitRepository;
+
 use App\Repositories\CategorieRepository;
 
 class ProduitController extends Controller
@@ -54,9 +56,8 @@ class ProduitController extends Controller
     public function store(ProduitStoreRequest $request)
     {
         $produit = $this->produitRepo->makeStore($request->validated());
-        $produits = $this->produitRepo->all();
 
-        return redirect()->route('produits.index',compact('produits'))->with('success','Produit enregistré avec succès.');
+        return redirect()->route('produits.index')->with('success','Produit enregistré avec succès.');
 
     }
 
@@ -97,9 +98,8 @@ class ProduitController extends Controller
     public function update(ProduitUpdateRequest $request, Produit $produit)
     {
         $this->produitRepo->makeUpdate($produit->id,$request->validated());
-        $produits = $this->produitRepo->all();
 
-        return redirect()->route('produits.index',compact('produits'))->with('success', 'Produit mis à jour');
+        return redirect()->route('produits.index')->with('success', 'Produit mis à jour');
 
     }
 

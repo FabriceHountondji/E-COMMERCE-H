@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\RoleStoreRequest;
+use App\Http\Requests\RoleUpdateRequest;
+use App\Repositories\RoleRepository;
+
 class RoleController extends Controller
 {
     /**
@@ -12,9 +16,18 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $fonctionRepo;
+
+    public function __construct(RoleRepository $roleRepo)
+    {
+        $this->roleRepo = $roleRepo;
+    }
+
     public function index()
     {
-        //
+        $roles = $this->roleRepo->getlatest();
+        return view('roles.index',compact('roles'));
     }
 
     /**
@@ -24,7 +37,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
+
     }
 
     /**
@@ -35,7 +49,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = $this->roleRepo->makeStore($request->validated());
+        $roles = $this->roleRepo->all();
+
+        return redirect()->route('roles.index',compact('roles'))->with('success','Rôle enregistré avec succès.');
+
     }
 
     /**
@@ -57,7 +75,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        $role = $this->roleRepo->find($role->id);
+
+        return view('roles.edit',compact('role'));
     }
 
     /**
@@ -69,7 +89,11 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $this->roleRepo->makeUpdate($role->id,$request->validated());
+        $roles = $this->roleRepo->all();
+
+        return redirect()->route('roles.index',compact('roles'))->with('success', 'Role mise à jour');
+
     }
 
     /**

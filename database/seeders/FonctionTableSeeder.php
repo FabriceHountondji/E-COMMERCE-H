@@ -14,7 +14,7 @@ class FonctionTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert([
+        DB::table('fonctions')->insert([
             [
                 'name' => 'administrateur',
                 'description' => 'C\'est l\'Administrateur'

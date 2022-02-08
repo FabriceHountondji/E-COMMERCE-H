@@ -39,12 +39,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="#"  class="" >
+                            <a href="{{ route('acteurs.create') }}"  class="" >
                                 <i class="metismenu-icon"></i>Ajouter un acteur
                             </a>
                         </li>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('acteurs.index') }}" >
                                 <i class="metismenu-icon"></i>Liste des acteurs
                             </a>
                         </li>
@@ -57,13 +57,31 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('produits.create') }}" >
                                 <i class="metismenu-icon"></i> Ajouter un produit
                             </a>
                         </li>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('produits.index') }}" >
                                 <i class="metismenu-icon"></i>Liste des produits
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-rocket"></i>Catégories
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('categories.create') }}"  class="" >
+                                <i class="metismenu-icon"></i>Ajouter une catégorie
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('categories.index') }}" >
+                                <i class="metismenu-icon"></i>Liste des catégories
                             </a>
                         </li>
                     </ul>
@@ -75,12 +93,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('fonctions.create') }}" >
                                 <i class="metismenu-icon"></i> Ajouter une fonction
                             </a>
                         </li>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('fonctions.index') }}" >
                                 <i class="metismenu-icon"></i>Liste des fonctions
                             </a>
                         </li>
@@ -111,12 +129,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('roles.create') }}" >
                                 <i class="metismenu-icon"></i> Ajouter un rôle
                             </a>
                         </li>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('roles.index') }}" >
                                 <i class="metismenu-icon"></i>Liste des rôles
                             </a>
                         </li>
@@ -163,7 +181,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('login') }}" >
+                            <a href="{{ route('index') }}" >
                                 <i class="metismenu-icon"></i>Retour à la vitrine
                             </a>
                         </li>

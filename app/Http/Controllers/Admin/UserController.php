@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\Admin\ChangePasswordRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 // use app\Rules\MatchOldPassword;
 
@@ -118,16 +119,15 @@ class UserController extends Controller
 
     }
 
-    // public function postSecurity(ChangePasswordRequest $request)
-    // {
-    //     $user = Auth::user();
-    //     if (Hash::check($request->current_password, Auth::user()->password)) {
-    //         $user->update(['password' => Hash::make($request->password)]);
-    //         return back()->with('success', 'password updated succesfully');
-    //     } else {
-    //         $validator = Validator::make([], []);
-    //         $validator->getMessageBag()->add('current_password', 'wrong password');
-    //         return back()->withErrors($validator);
-    //     }
-    // }
+    public function postSecurity(ChangePasswordRequest $request)
+    {
+        if (Hash::check($request->current_password, Auth::user()->password)) {
+            $this->userRepo->makeUpdate(['password' => Hash::make($request->password)],$request->validated());
+            return back()->with('success', 'password updated succesfully');
+        } else {
+            $validator = Validator::make([], []);
+            $validator->getMessageBag()->add('current_password', 'wrong password');
+            return back()->withErrors($validator);
+        }
+    }
 }

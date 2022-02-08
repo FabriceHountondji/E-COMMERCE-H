@@ -12,6 +12,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ActeurController;
 use App\Http\Controllers\Admin\FonctionController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\ImageController;
+
+use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\CaissierController;
 use App\Http\Controllers\Admin\LivreurController;
 use App\Http\Controllers\Admin\ProduitController;
@@ -35,17 +38,21 @@ Route::get('/login', [LoginController::class , 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LogoutController::class,'logout'])->name('logout');
 
-Route::resource('reset', ResetPasswordController::class);
-
-
-
-Route::get('/', function () {return view('index'); });
+Route::get('/', function () {return view('index'); })->name('index');
 // ACTIONS SUR TABLEAU DE BORD
 
 Route::resource('dashboard', DashboardController::class);
+
 Route::resource('acteurs', ActeurController::class);
-Route::resource('produits', ProduitController::class);
-Route::resource('caissiers', CaissierController::class);
-Route::resource('livreurs', LivreurController::class);
+Route::resource('reset', ResetPasswordController::class);
+
 Route::resource('roles', RoleController::class);
 Route::resource('fonctions', FonctionController::class);
+Route::resource('caissiers', CaissierController::class);
+Route::resource('livreurs', LivreurController::class);
+
+Route::resource('produits', ProduitController::class);
+Route::resource('images', ImageController::class);
+Route::resource('categories', CategorieController::class);
+
+

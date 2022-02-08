@@ -49,9 +49,8 @@ class CategorieController extends Controller
     public function store(CategorieStoreRequest $request)
     {
         $categorie = $this->categorieRepo->makeStore($request->validated());
-        $categories = $this->categorieRepo->all();
 
-        return redirect()->route('categories.index',compact('categories'))->with('success','Catégorie enregistrée avec succès.');
+        return redirect()->route('categories.index')->with('success','Catégorie enregistrée avec succès.');
 
     }
 
@@ -90,9 +89,8 @@ class CategorieController extends Controller
     public function update(CategorieUpdateRequest $request, Categorie $categorie)
     {
         $this->categorieRepo->makeUpdate($categorie->id,$request->validated());
-        $categories = $this->categorieRepo->all();
 
-        return redirect()->route('categories.index',compact('categories'))->with('success', 'Catégorie mise à jour');
+        return redirect()->route('categories.index')->with('success', 'Catégorie mise à jour');
 
     }
 
