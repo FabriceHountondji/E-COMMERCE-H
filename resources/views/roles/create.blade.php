@@ -12,13 +12,13 @@
                 <div class="form-group">
                     <label for="lastname">Nom du rôle</label>
                     <div>
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Entrer le rôle" />
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Entrer le rôle" required />
                     </div>
                 </div>
 
                 <div class="position-relative form-group">
                     <label for="exampleText" class="">Description</label>
-                    <textarea name="description" id="exampleText" class="form-control"></textarea>
+                    <textarea name="description" id="exampleText" class="form-control" required ></textarea>
                 </div>
 
                 <div class="form-group">

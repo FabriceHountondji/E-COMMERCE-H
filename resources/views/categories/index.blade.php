@@ -9,8 +9,8 @@
                 <div class="page-title-icon">
                     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
                 </div>
-                <div>Dashboard fonctions
-                    <div class="page-title-subheading">Tableau de bord de la gestion des fonctions</div>
+                <div>Dashboard catégorie
+                    <div class="page-title-subheading">Tableau de bord de la gestion des catégories</div>
                 </div>
             </div>
             <div class="page-title-actions">
@@ -164,7 +164,7 @@
     <div class="card mb-3">
         <div class="card-header-tab card-header">
             <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i
-                    class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des acteurs système
+                    class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des catégories
             </div>
             <div class="btn-actions-pane-right actions-icon-btn">
                 <div class="btn-group dropdown">
@@ -202,16 +202,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($categories as $index => $categorie)
+                    @foreach($categories as $index => $category)
                         <tr>
-                            <td>{{ $categorie->name }} </td>
-                            <td> {{ $categorie->description }}</td>
+                            <td>{{ $category->name }} </td>
+                            <td> {{ $category->description }}</td>
                             <td>
                                 <div class="buttons">
-                                    <a href="{{ route('categories.edit', $categorie) }}" class="btn btn-outline-warning">Modifier</a>
+                                    <a href="{{ route('categories.edit', $category) }}" class="btn btn-outline-warning">Modifier</a>
 
-                                    @include('delete.delete', ['url' => route('categories.destroy', $categorie), 'modal_id' => 'delete-modal' .
-                                        $categorie->id])
+                                    @include('delete.delete', ['url' => route('categories.destroy', $category), 'modal_id' => 'delete-modal' .
+                                        $category->id])
                                 </div>
                             </td>
                         </tr>

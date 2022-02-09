@@ -83,10 +83,12 @@ class ActeurController extends Controller
     public function edit(Acteur $acteur)
     {
         $fonction = $this->fonctionRepo->find($acteur->fonction->id);
+        $user = $this->userRepo->find($acteur->user->id);
         $acteur = $this->acteurRepo->find($acteur->id);
         $fonctions = $this->fonctionRepo->all();
+        $users = $this->userRepo->all();
 
-        return view('acteurs.edit',compact('fonction','fonctions','acteur'));
+        return view('acteurs.edit',compact('fonction','fonctions','acteur','user','users'));
     }
 
     /**

@@ -13,13 +13,13 @@
                 <div class="form-group">
                     <label for="lastname">Rôle</label>
                     <div>
-                        <input type="text" class="form-control" id="role" name="role" placeholder="Entrer la rôle" value="{{ old('name') ? old('name') : $role->name }}" />
+                        <input type="text" class="form-control" id="role" name="role" placeholder="Entrer la rôle" value="{{ old('name') ? old('name') : $role->name }}" required/>
                     </div>
                 </div>
 
                 <div class="position-relative form-group">
                     <label for="exampleText" class="">Description</label>
-                    <textarea name="description" id="exampleText" class="form-control" value="{{ old('description') ? old('description') : $role->description }}"></textarea>
+                    <textarea name="description" id="exampleText" class="form-control" required > {{ old('description') ? old('description') : $role->description }} </textarea>
                 </div>
 
                 <div class="form-group">

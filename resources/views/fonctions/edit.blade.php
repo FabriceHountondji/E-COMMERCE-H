@@ -13,18 +13,19 @@
                 <div class="form-group">
                     <label for="lastname">Fonction</label>
                     <div>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Entrer la fonction" value="{{ old('name') ? old('name') : $fonction->name }}" />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Entrer la fonction" value="{{ old('name') ? old('name') : $fonction->name }}" required/>
                     </div>
                 </div>
 
                 <div class="position-relative form-group">
                     <label for="exampleText" class="">Description</label>
-                    <textarea name="description" id="exampleText" class="form-control" value="{{ old('description') ? old('description') : $fonction->description }}"></textarea>
+                    <textarea name="description" id="exampleText" class="form-control" required > {{ old('description') ? old('description') : $fonction->description }} </textarea>
                 </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" name="enregistrer" value="Enregistrer">Enregister les modifications</button>
                 </div>
+
             </form>
         </div>
     </div>

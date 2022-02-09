@@ -11,24 +11,24 @@
                 <div class="form-group">
                     <label for="firstname">Prénom(s)</label>
                     <div>
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" />
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lastname">Nom</label>
                     <div>
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" />
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="phone">Numéro de Téléphone</label>
                     <div>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="N-Téléphone" />
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="N-Téléphone" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="datenat">Date de naissance</label>
-                    <input type="text" class="form-control" data-toggle="datepicker-year" name="birthday"/>
+                    <input type="text" class="form-control" data-toggle="datepicker-year" name="birthday" required/>
                 </div>
 
                 <div class="position-relative form-group">
@@ -41,14 +41,14 @@
                 <div class="form-group">
                     <label for="lastname">Adresse</label>
                     <div>
-                        <input type="text" class="form-control" id="adresse" name="address" placeholder="Adresse" />
+                        <input type="text" class="form-control" id="adresse" name="address" placeholder="Adresse" required/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <div>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required/>
                     </div>
                 </div>
 

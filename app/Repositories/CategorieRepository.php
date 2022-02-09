@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\Models\Categorie; 
+use App\Models\Categorie;
 
 class CategorieRepository
 {
@@ -15,7 +15,7 @@ class CategorieRepository
      * @var Model
      */
     protected $model;
-    
+
 
     /**
      * Constructor

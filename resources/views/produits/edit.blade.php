@@ -10,26 +10,26 @@
                 @csrf
                 {{ method_field('PUT') }}
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="firstname">Image principale</label>
                     <div>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Mom du produit" value="{{ old('name') ? old('name') : $produit->name }}" />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Mom du produit" value="{{ old('name') ? old('name') : $produit->name }}" required/>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="lastname">Nom</label>
                     <div>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Nom du produit" value="{{ old('name') ? old('name') : $produit->name }}"/>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nom du produit" value="{{ old('name') ? old('name') : $produit->name }}" required />
                     </div>
                 </div>
                 <div class="position-relative form-group">
                     <label for="exampleText" class="">Description</label>
-                    <textarea name="description" id="exampleText" class="form-control" value="{{ old('description') ? old('description') : $produit->description }}"></textarea>
+                    <textarea name="description" id="exampleText" class="form-control"  required > {{ old('description') ? old('description') : $produit->description }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="phone">Prix</label>
                     <div>
-                        <input type="text" class="form-control" id="prix" name="prix" placeholder="Prix du produit" value="{{ old('prix') ? old('prix') : $produit->prix }}" />
+                        <input type="text" class="form-control" id="prix" name="prix" placeholder="Prix du produit" value="{{ old('prix') ? old('prix') : $produit->prix }}" required/>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                     <label for="exampleSelect" class="">Catégorie</label>
                     <select name="categorie_id" id="exampleSelect" class="form-control">
                         @foreach ($categories as $categorie)
-                            <option value="{{ $categorie->id }}"> {{ $produit->categorie == '$categorie->id' ? 'selected' : '' }}</option>
+                            <option value="{{ $categorie->id }}" {{ $produit->categorie->name == $categorie->name ? 'selected' : '' }}> {{ $categorie->name }} </option>
                         @endforeach
                     </select>
                 </div>

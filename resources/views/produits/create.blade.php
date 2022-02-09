@@ -17,17 +17,17 @@
                 <div class="form-group">
                     <label for="name">Nom</label>
                     <div>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Désignation du produit" />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Désignation du produit" required/>
                     </div>
                 </div>
                 <div class="position-relative form-group">
                     <label for="exampleText" class="">Description</label>
-                    <textarea name="description" id="exampleText" class="form-control"></textarea>
+                    <textarea name="description" id="exampleText" class="form-control" required ></textarea>
                 </div>
                 <div class="form-group">
                     <label for="phone">Prix</label>
                     <div>
-                        <input type="text" class="form-control" id="prix" name="prix" placeholder="Prix du produit" />
+                        <input type="text" class="form-control" id="prix" name="prix" placeholder="Prix du produit" required />
                     </div>
                 </div>
 

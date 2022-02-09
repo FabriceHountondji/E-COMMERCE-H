@@ -48,7 +48,7 @@ class CategorieController extends Controller
      */
     public function store(CategorieStoreRequest $request)
     {
-        $categorie = $this->categorieRepo->makeStore($request->validated());
+        $this->categorieRepo->makeStore($request->validated());
 
         return redirect()->route('categories.index')->with('success','Catégorie enregistrée avec succès.');
 
@@ -60,7 +60,7 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $categorie)
+    public function show(Categorie $category)
     {
         //
     }
@@ -71,11 +71,11 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $categorie)
+    public function edit(Categorie $category)
     {
-        $categorie = $this->categorieRepo->find($categorie->id);
+        $category = $this->categorieRepo->find($category->id);
 
-        return view('categories.edit',compact('categorie'));
+        return view('categories.edit',compact('category'));
 
     }
 
@@ -86,9 +86,9 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(CategorieUpdateRequest $request, Categorie $categorie)
+    public function update(CategorieUpdateRequest $request, Categorie $category)
     {
-        $this->categorieRepo->makeUpdate($categorie->id,$request->validated());
+        $this->categorieRepo->makeUpdate($category->id,$request->validated());
 
         return redirect()->route('categories.index')->with('success', 'Catégorie mise à jour');
 
@@ -100,12 +100,11 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorie $categorie)
+    public function destroy(Categorie $category)
     {
-        $categorie->delete();
-        $categories = $this->categorieRepo->all();
+        $category->delete();
 
-        return redirect()->route('categories.index',compact('categories'))->with('success','Catégorie supprimée avec succès');
+        return redirect()->route('categories.index')->with('success','Catégorie supprimée avec succès');
 
     }
 }

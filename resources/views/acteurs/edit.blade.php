@@ -59,7 +59,7 @@
                     <label for="exampleSelect" class="">Fonction</label>
                     <select name="fonction_id" id="exampleSelect" class="form-control">
                         @foreach ($fonctions as $fonction)
-                            <option value="{{ $fonction->id }}"> {{ $acteur->fonction == '$fonction->id' ? 'selected' : '' }}</option>
+                            <option value="{{ $fonction->id }}" {{ $acteur->fonction->name == $fonction->name ? 'selected' : '' }}> {{ $fonction->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -68,7 +68,7 @@
                     <label for="exampleSelect" class="">Compte utilisateur</label>
                     <select name="user_id" id="exampleSelect" class="form-control">
                         @foreach ($users as $user)
-                            <option value="{{ $user->id }}"> {{ $acteur->user == '$user->id' ? 'selected' : '' }}</option>
+                            <option value="{{ $user->id }}" {{ $acteur->user->email == $user->email ? 'selected' : '' }}> {{ $user->email }}</option>
                         @endforeach
                     </select>
                 </div>

@@ -47,10 +47,9 @@ class FonctionController extends Controller
      */
     public function store(FonctionStoreRequest $request)
     {
-        $fonction = $this->fonctionRepo->makeStore($request->validated());
-        $fonctions = $this->fonctionRepo->all();
+        $this->fonctionRepo->makeStore($request->validated());
 
-        return redirect()->route('fonctions.index',compact('fonctions'))->with('success','Fonction enregistrée avec succès.');
+        return redirect()->route('fonctions.index')->with('success','Fonction enregistrée avec succès.');
 
     }
 
@@ -89,9 +88,8 @@ class FonctionController extends Controller
     public function update(FonctionUpdateRequest $request, Fonction $fonction)
     {
         $this->fonctionRepo->makeUpdate($fonction->id,$request->validated());
-        $fonctions = $this->fonctionRepo->all();
 
-        return redirect()->route('fonctions.index',compact('fonctions'))->with('success', 'Fonction mise à jour');
+        return redirect()->route('fonctions.index')->with('success', 'Fonction mise à jour');
 
     }
 
@@ -104,9 +102,8 @@ class FonctionController extends Controller
     public function destroy(Fonction $fonction)
     {
         $fonction->delete();
-        $fonctions = $this->fonctionRepo->all();
 
-        return redirect()->route('fonctions.index',compact('fonctions'))->with('success','Catégorie supprimée avec succès');
+        return redirect()->route('fonctions.index')->with('success','Catégorie supprimée avec succès');
 
     }
 }
