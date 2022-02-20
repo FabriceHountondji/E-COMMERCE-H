@@ -163,14 +163,16 @@
     <div class="card mb-3">
         <div class="card-header-tab card-header">
             <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                    <i class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des produits
+                <i class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des produits
             </div>
 
             <div class="btn-actions-pane-right actions-icon-btn">
                 <div class="btn-group dropdown">
-                    <button class="mb-2 mr-2 btn-icon btn btn-success"><i class="pe-7s-tools btn-icon-wrapper"> </i>
-                        Ajouter un produit
-                    </button>
+                    <a href="{{ route('produits.create') }}">
+                        <button class="mb-2 mr-2 btn-icon btn btn-success">
+                            Ajouter
+                        </button>
+                    </a>
                 </div>
             </div>
 
@@ -198,9 +200,8 @@
                             <td>
                                 <div class="buttons">
                                     <a href="{{ route('produits.edit', $produit) }}" class="btn btn-outline-warning">Editer</a>
-
-                                    @include('delete.delete', ['url' => route('produits.destroy', $produit), 'modal_id' => 'delete-modal' .
-                                        $produit->id])
+                                    <a href="{{ route('produits.delete', $produit) }}" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous vraiment effectuer la suppression ?')">Supprimer</a>
+                                
                                 </div>
                             </td>
                         </tr>

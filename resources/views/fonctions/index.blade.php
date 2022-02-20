@@ -163,32 +163,17 @@
     </div>
     <div class="card mb-3">
         <div class="card-header-tab card-header">
-            <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i
-                    class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des acteurs système
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                <i class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des fonctions
             </div>
+
             <div class="btn-actions-pane-right actions-icon-btn">
                 <div class="btn-group dropdown">
-                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        class="btn-icon btn-icon-only btn btn-link">
-                        <i class="pe-7s-menu btn-icon-wrapper"></i>
-                    </button>
-                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-right rm-pointers dropdown-menu-shadow dropdown-menu-hover-link dropdown-menu">
-                        <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                        <button type="button" tabindex="0" class="dropdown-item">
-                            <i class="dropdown-icon lnr-inbox"> </i><span>Menus</span>
+                    <a href="{{ route('fonctions.create') }}">
+                        <button class="mb-2 mr-2 btn-icon btn btn-success">
+                            Ajouter
                         </button>
-                        <button type="button" tabindex="0" class="dropdown-item">
-                            <i class="dropdown-icon lnr-file-empty"> </i><span>Settings</span>
-                        </button>
-                        <button type="button" tabindex="0" class="dropdown-item">
-                            <i class="dropdown-icon lnr-book"> </i><span>Actions</span>
-                        </button>
-                        <div tabindex="-1" class="dropdown-divider"></div>
-                        <div class="p-3 text-right">
-                            <button class="mr-2 btn-shadow btn-sm btn btn-link">View Details</button>
-                            <button class="mr-2 btn-shadow btn-sm btn btn-primary">Action</button>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -209,9 +194,8 @@
                             <td>
                                 <div class="buttons">
                                     <a href="{{ route('fonctions.edit', $fonction) }}" class="btn btn-outline-warning">Editer</a>
+                                    <a href="{{ route('fonctions.delete', $fonction) }}" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous vraiment effectuer la suppression ?')">Supprimer</a>
                                     
-                                    @include('delete.delete', ['url' => route('fonctions.destroy', $fonction), 'modal_id' => 'delete-modal' .
-                                        $fonction->id])
                                 </div>
                             </td>
                         </tr>

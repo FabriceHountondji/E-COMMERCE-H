@@ -10,6 +10,6 @@ class Fonction extends Model
     public $fillable = ['name','description'];
 
     public function acteurs(){
-        return $this->belongsToMany('App\Models\Acteur');
+        return $this->belongsToMany(Acteur::class);
     }
 }

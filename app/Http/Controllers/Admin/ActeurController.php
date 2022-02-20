@@ -116,9 +116,8 @@ class ActeurController extends Controller
     public function destroy(Acteur $acteur)
     {
         $acteur->delete();
-        $acteurs = $this->acteurRepo->all();
 
-        return redirect()->route('acteurs.index',compact('acteurs'))->with('success','Acteur supprimé avec succès');
+        return redirect()->route('acteurs.index')->with('success','Acteur supprimé avec succès');
     }
 }
 

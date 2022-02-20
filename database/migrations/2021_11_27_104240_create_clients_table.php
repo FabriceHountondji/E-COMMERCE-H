@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActeursTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateActeursTable extends Migration
      */
     public function up()
     {
-        Schema::create('acteurs', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('firstname');
             $table->string('lastname');
@@ -22,8 +22,6 @@ class CreateActeursTable extends Migration
             $table->string('sexe');
             $table->string('address');
             $table->string('email');
-            $table->unsignedInteger('fonction_id');
-            $table->foreign('fonction_id')->references('id')->on('fonctions');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
@@ -37,6 +35,6 @@ class CreateActeursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('acteurs');
+        Schema::dropIfExists('clients');
     }
 }

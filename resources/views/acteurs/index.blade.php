@@ -8,8 +8,8 @@
                 <div class="page-title-icon">
                     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
                 </div>
-                <div>Dashboard acteurs système
-                    <div class="page-title-subheading">Tableau de bord de la gestion des acteurs de l'application</div>
+                <div>Dashboard acteurs
+                    <div class="page-title-subheading">Tableau de bord de la gestion des acteurs</div>
                 </div>
             </div>
             <div class="page-title-actions">
@@ -168,11 +168,14 @@
 
             <div class="btn-actions-pane-right actions-icon-btn">
                 <div class="btn-group dropdown">
-                    <button class="mb-2 mr-2 btn-icon btn btn-success"><i class="pe-7s-tools btn-icon-wrapper"> </i>
-                        Ajouter un acteur
-                    </button>
+                    <a href="{{ route('acteurs.create') }}">
+                        <button class="mb-2 mr-2 btn-icon btn btn-success">
+                            Ajouter
+                        </button>
+                    </a>
                 </div>
             </div>
+
 
         </div>
         <div class="card-body">
@@ -198,9 +201,8 @@
                             <td>
                                 <div class="buttons">
                                     <a href="{{ route('acteurs.edit', $acteur) }}" class="btn btn-outline-warning">Editer</a>
+                                    <a href="{{ route('acteurs.delete', $acteur) }}" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous vraiment effectuer la suppression ?')">Supprimer</a>
 
-                                    @include('delete.delete', ['url' => route('acteurs.destroy', $acteur), 'modal_id' => 'delete-modal' .
-                                        $acteur->id])
                                 </div>
                             </td>
                         </tr>

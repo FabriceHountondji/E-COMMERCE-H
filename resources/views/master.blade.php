@@ -30,6 +30,7 @@
             <div class="app-main__outer">
 
                 @include('layouts.partials.dashboard.body')
+                @include('message-flash.flash')
 
                 @yield('content')
 

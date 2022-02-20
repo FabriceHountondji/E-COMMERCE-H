@@ -1,6 +1,7 @@
-@extends('master')
+@extends('dashboard')
 
 @section('content')
+
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -8,8 +9,8 @@
                 <div class="page-title-icon">
                     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
                 </div>
-                <div>Dashboard produits
-                    <div class="page-title-subheading">Tableau de bord de la gestion des produits</div>
+                <div>Dashboard images
+                    <div class="page-title-subheading">Tableau de bord de la gestion des images</div>
                 </div>
             </div>
             <div class="page-title-actions">
@@ -162,45 +163,44 @@
     </div>
     <div class="card mb-3">
         <div class="card-header-tab card-header">
-            <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                    <i class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des produits
+            <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i
+                    class="header-icon lnr-laptop-phone mr-3 text-muted opacity-6"> </i>Liste des images
             </div>
-
             <div class="btn-actions-pane-right actions-icon-btn">
                 <div class="btn-group dropdown">
-                    <button class="mb-2 mr-2 btn-icon btn btn-success"><i class="pe-7s-tools btn-icon-wrapper"> </i>
-                        Ajouter un produit
-                    </button>
+                    <a href="{{ route('images.create') }}">
+                        <button class="mb-2 mr-2 btn-icon btn btn-success">
+                            Ajouter
+                        </button>
+                    </a>
                 </div>
             </div>
-
         </div>
         <div class="card-body">
             <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Photo</th>
-                        <th>Nom</th>
+                        <th>Apperçu</th>
+                        <th>Url</th>
                         <th>Description</th>
-                        <th>Prix</th>
-                        <th>Catégorie</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($produits as $index => $produit)
+                    @foreach($images as $index => $image)
                         <tr>
-                            <td>{{ $produit->name }} </td>
-                            <td> {{ $produit->name }}</td>
-                            <td> {{ $produit->description }}</td>
-                            <td> {{ $produit->prix }}</td>
-                            <td>{{ $produit->categorie->name }} </td>
+                            <td>
+                            <div class="widget-user-image">
+                                <img class="img-circle elevation-2" id="photos" src="{{ asset($image->url) }}">
+                            </div>
+                            </td>
+                            <td>{{ $image->url }} </td>
+                            <td> {{ $image->description }}</td>
                             <td>
                                 <div class="buttons">
-                                    <a href="{{ route('produits.edit', $produit) }}" class="btn btn-outline-warning">Editer</a>
+                                    <a href="{{ route('images.edit', $image) }}" class="btn btn-outline-warning">Modifier</a>
+                                    <a href="{{ route('images.delete', $image) }}" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous vraiment effectuer la suppression ?')">Supprimer</a>
 
-                                    @include('delete.delete', ['url' => route('produits.destroy', $produit), 'modal_id' => 'delete-modal' .
-                                        $produit->id])
                                 </div>
                             </td>
                         </tr>
@@ -208,11 +208,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Photo</th>
-                        <th>Nom</th>
+                        <th>Apperçu</th>
+                        <th>Url</th>
                         <th>Description</th>
-                        <th>Prix</th>
-                        <th>Catégorie</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>

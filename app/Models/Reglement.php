@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reglement extends Model
 {
-    public $fillable = ['solde','dateReglement','facture_id'];
+    public $fillable = ['solde','dateReglement','facture_id','typeReglement_id'];
 
     public function typeReglement(){
-        return $this->belongsTo('App\Models\TypeReglement');
+        return $this->belongsTo(TypeReglement::class);
     }
 
     public function facture(){
-        return $this->belongsTo('App\Models\Facture');
+        return $this->belongsTo(Facture::class);
     }
 }

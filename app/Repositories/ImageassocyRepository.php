@@ -3,9 +3,9 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\Models\Categorie;
+use App\Models\Imageassocy; 
 
-class CategorieRepository
+class ImageassocyRepository
 {
     use Repository;
 
@@ -15,7 +15,7 @@ class CategorieRepository
      * @var Model
      */
     protected $model;
-
+    
 
     /**
      * Constructor
@@ -23,7 +23,7 @@ class CategorieRepository
     public function __construct()
     {
         // setup the model
-        $this->model = app(Categorie::class);
+        $this->model = app(Imageassocy::class);
     }
 
     /**
@@ -45,19 +45,19 @@ class CategorieRepository
     /**
      * To store model
      */
-    public function makeStore($data): Categorie{
-        $categorie = new Categorie($data);
-        $categorie->save();
-        return $categorie;
+    public function makeStore($data): Imageassocy{
+        $imageassocy = new Imageassocy($data);
+        $imageassocy->save();
+        return $imageassocy;
     }
 
     /**
      * To update model
      */
-    public function makeUpdate($id, $data): Categorie{
-        $categorie = Categorie::findOrFail($id);
-        $categorie->update($data);
-        return $categorie;
+    public function makeUpdate($id, $data): Imageassocy{
+        $imageassocy = Imageassocy::findOrFail($id);
+        $imageassocy->update($data);
+        return $imageassocy;
     }
 
     /**

@@ -47,12 +47,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleStoreRequest $request)
     {
         $role = $this->roleRepo->makeStore($request->validated());
-        $roles = $this->roleRepo->all();
 
-        return redirect()->route('roles.index',compact('roles'))->with('success','Rôle enregistré avec succès.');
+        return redirect()->route('roles.index')->with('success','Rôle enregistré avec succès.');
 
     }
 
@@ -87,12 +86,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleUpdateRequest $request, Role $role)
     {
         $this->roleRepo->makeUpdate($role->id,$request->validated());
-        $roles = $this->roleRepo->all();
 
-        return redirect()->route('roles.index',compact('roles'))->with('success', 'Role mise à jour');
+        return redirect()->route('roles.index')->with('success', 'Role mise à jour');
 
     }
 
@@ -104,6 +102,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+
+        return redirect()->route('roles.index')->with('success','Rôle supprimé avec succès');
+    
     }
 }

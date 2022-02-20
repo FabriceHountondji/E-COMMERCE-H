@@ -10,7 +10,7 @@ use App\Http\Requests\ProduitUpdateRequest;
 
 use App\Repositories\ProduitRepository;
 
-use App\Repositories\CategorieRepository;
+use App\Repositories\CategoryRepository;
 
 class ProduitController extends Controller
 {
@@ -22,12 +22,12 @@ class ProduitController extends Controller
 
 
     protected $produitRepo;
-    protected $categorieRepo;
+    protected $categoryRepo;
 
-    public function __construct(ProduitRepository $produitRepo,CategorieRepository $categorieRepo)
+    public function __construct(ProduitRepository $produitRepo,CategoryRepository $categoryRepo)
     {
         $this->produitRepo = $produitRepo;
-        $this->categorieRepo = $categorieRepo;
+        $this->categoryRepo = $categoryRepo;
     }
 
     public function index()
@@ -43,7 +43,7 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        $categories = $this->categorieRepo->getlatest();
+        $categories = $this->categoryRepo->getlatest();
         return view('produits.create',compact('categories'));
     }
 
@@ -80,11 +80,11 @@ class ProduitController extends Controller
      */
     public function edit(Produit $produit)
     {
-        $categorie = $this->categorieRepo->find($produit->categorie->id);
+        $category = $this->categoryRepo->find($produit->category->id);
         $produit = $this->produitRepo->find($produit->id);
-        $categories = $this->categorieRepo->all();
+        $categories = $this->categoryRepo->all();
 
-        return view('produits.edit',compact('categorie','categories','produit'));
+        return view('produits.edit',compact('category','categories','produit'));
 
     }
 

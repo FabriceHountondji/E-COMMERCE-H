@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Categorie;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\CategorieStoreRequest;
-use App\Http\Requests\CategorieUpdateRequest;
-use App\Repositories\CategorieRepository;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
+use App\Repositories\CategoryRepository;
 
-class CategorieController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +17,18 @@ class CategorieController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    protected $categorieRepo;
+    protected $categoryRepo;
 
-    public function __construct(CategorieRepository $categorieRepo)
+    public function __construct(CategoryRepository $categoryRepo)
     {
-        $this->categorieRepo = $categorieRepo;
+        $this->categoryRepo = $categoryRepo;
     }
 
     public function index()
     {
-        $categories = $this->categorieRepo->getlatest();
+        $categories = $this->categoryRepo->getlatest();
         return view('categories.index', compact('categories'));
+    
     }
 
     /**
@@ -38,6 +39,7 @@ class CategorieController extends Controller
     public function create()
     {
         return view('categories.create');
+
     }
 
     /**
@@ -46,9 +48,9 @@ class CategorieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategorieStoreRequest $request)
+    public function store(CategoryStoreRequest $request)
     {
-        $this->categorieRepo->makeStore($request->validated());
+        $this->categoryRepo->makeStore($request->validated());
 
         return redirect()->route('categories.index')->with('success','Catégorie enregistrée avec succès.');
 
@@ -57,10 +59,10 @@ class CategorieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $category)
+    public function show(Category $category)
     {
         //
     }
@@ -68,12 +70,12 @@ class CategorieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $category)
+    public function edit(Category $category)
     {
-        $category = $this->categorieRepo->find($category->id);
+        $category = $this->categoryRepo->find($category->id);
 
         return view('categories.edit',compact('category'));
 
@@ -83,12 +85,12 @@ class CategorieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(CategorieUpdateRequest $request, Categorie $category)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $this->categorieRepo->makeUpdate($category->id,$request->validated());
+        $this->categoryRepo->makeUpdate($category->id,$request->validated());
 
         return redirect()->route('categories.index')->with('success', 'Catégorie mise à jour');
 
@@ -97,10 +99,10 @@ class CategorieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorie $category)
+    public function destroy(Category $category)
     {
         $category->delete();
 

@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ImageStoreRequest;
 use App\Http\Requests\ImageUpdateRequest;
 use App\Repositories\ImageRepository;
-use App\Repositories\ProduitRepository;
+
+use Intervention\Image\Facades\Image as Images;
 
 class ImageController extends Controller
 {
@@ -19,18 +20,17 @@ class ImageController extends Controller
      */
 
     protected $imageRepo;
-    protected $produitRepo;
 
-    public function __construct(ImageRepository $imageRepo,ProduitRepository $produitRepo)
+    public function __construct(ImageRepository $imageRepo)
     {
         $this->imageRepo = $imageRepo;
-        $this->produitRepo = $produitRepo;
     }
-
+    
     public function index()
     {
-        $images = $this->acteurRepo->getlatest();
+        $images = $this->imageRepo->getlatest();
         return view('images.index', compact('images'));
+
     }
 
     /**
@@ -40,8 +40,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-        $produits = $this->produitRepo->getlatest();
-        return view('images.create',compact('produits'));
+        return view('images.create');
+
     }
 
     /**
@@ -52,10 +52,10 @@ class ImageController extends Controller
      */
     public function store(ImageStoreRequest $request)
     {
-        $image = $this->imageRepo->makeStore($request->validated());
-        $images = $this->imageRepo->all();
+        $this->imageRepo->makeStore($request->validated());
 
-        return redirect()->route('images.index',compact('images'))->with('success','Image enregistrée avec succès.');
+        return redirect()->route('images.index')->with('success','Image enregistrée avec succès.');
+
     }
 
     /**
@@ -77,11 +77,9 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        $produit = $this->produitRepo->find($image->produit->id);
         $image = $this->imageRepo->find($image->id);
-        $produits = $this->produitRepo->all();
 
-        return view('images.edit',compact('produit','produits','image'));
+        return view('images.edit',compact('image'));
 
     }
 
@@ -95,9 +93,8 @@ class ImageController extends Controller
     public function update(ImageUpdateRequest $request, Image $image)
     {
         $this->imageRepo->makeUpdate($image->id,$request->validated());
-        $images = $this->imageRepo->all();
 
-        return redirect()->route('images.index',compact('images'))->with('success', 'Image mis à jour');
+        return redirect()->route('images.index')->with('success', 'Image mise à jour');
 
     }
 
@@ -110,9 +107,8 @@ class ImageController extends Controller
     public function destroy(Image $image)
     {
         $image->delete();
-        $images = $this->imageRepo->all();
 
-        return redirect()->route('images.index',compact('images'))->with('success','Image supprimée avec succès');
+        return redirect()->route('images.index')->with('success','Image supprimée avec succès');
 
     }
 }

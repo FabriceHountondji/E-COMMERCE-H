@@ -14,9 +14,9 @@ use App\Http\Controllers\Admin\FonctionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ImageController;
 
-use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CaissierController;
-use App\Http\Controllers\Admin\LivreurController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ProduitController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -42,17 +42,27 @@ Route::get('/', function () {return view('index'); })->name('index');
 // ACTIONS SUR TABLEAU DE BORD
 
 Route::resource('dashboard', DashboardController::class);
-
-Route::resource('acteurs', ActeurController::class);
 Route::resource('reset', ResetPasswordController::class);
 
+Route::resource('acteurs', ActeurController::class);
+Route::get('acteurs.delete.{acteur}',[ActeurController::class,'destroy'])->name('acteurs.delete');
+
 Route::resource('roles', RoleController::class);
+Route::get('roles.delete.{role}',[RoleController::class,'destroy'])->name('roles.delete');
+
 Route::resource('fonctions', FonctionController::class);
-Route::resource('caissiers', CaissierController::class);
-Route::resource('livreurs', LivreurController::class);
+Route::get('fonctions.delete.{fonction}',[FonctionController::class,'destroy'])->name('fonctions.delete');
 
 Route::resource('produits', ProduitController::class);
+Route::get('produits.delete.{produit}',[ProduitController::class,'destroy'])->name('produits.delete');
+
 Route::resource('images', ImageController::class);
-Route::resource('categories', CategorieController::class);
+Route::get('images.delete.{image}',[ImageController::class,'destroy'])->name('images.delete');
+
+Route::resource('categories', CategoryController::class);
+Route::get('categories.delete.{category}',[CategoryController::class,'destroy'])->name('categories.delete');
+
+Route::resource('clients', ClientController::class);
+Route::get('clients.delete.{client}',[ClientController::class,'destroy'])->name('clients.delete');
 
 

@@ -10,6 +10,6 @@ class Facture extends Model
     public $fillable = ['solde','dateFacture','client_id'];
 
     public function acteur(){
-        return $this->belongsTo('App\Models\Acteur');
+        return $this->belongsTo(Acteur::class);
     }
 }

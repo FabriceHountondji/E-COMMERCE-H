@@ -10,6 +10,6 @@ class Role extends Model
     public $fillable = ['name', 'description'];
 
     public function user(){
-        return $this->hasMany('App\Models\User');
+        return $this->belongsToMany(User::class);
     }
 }

@@ -47,7 +47,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = $this->roleRepo->getlatest();
-        return view('users.create',compact('fonctions'));
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -59,8 +59,7 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $user = $this->userRepo->makeStore($request->validated());
-        $users = $this->userRepo->all();
-        return redirect()->route('users.index',compact('users'))->with('success', 'Compte utilisateur ajouté avec succès');
+        return redirect()->route('users.index')->with('success', 'Compte utilisateur ajouté avec succès');
     }
 
     /**
@@ -99,9 +98,8 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, User $user)
     {
         $this->userRepo->makeUpdate($user->id,$request->validated());
-        $users = $this->userRepo->all();
 
-        return redirect()->route('users.index',compact('users'))->with('success', 'Compte utilisateur mise à jour avec succès');
+        return redirect()->route('users.index')->with('success', 'Compte utilisateur mise à jour avec succès');
     }
 
     /**
@@ -113,9 +111,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        $users = $this->userRepo->all();
 
-        return redirect()->route('users.index',compact('users'))->with('success','Compte utilisateur supprimé avec succès');
+        return redirect()->route('users.index')->with('success','Compte utilisateur supprimé avec succès');
 
     }
 

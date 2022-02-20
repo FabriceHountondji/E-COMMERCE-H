@@ -34,8 +34,8 @@
                 <div class="position-relative form-group">
                     <label for="exampleSelect" class="">Catégorie</label>
                     <select name="categorie_id" id="exampleSelect" class="form-control">
-                        @foreach ($categories as $categorie)
-                            <option value="{{ $categorie->id }}"> {{ $categorie->name }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"> {{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>

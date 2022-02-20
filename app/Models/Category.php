@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorie extends Model
+class Category extends Model
 {
     public $fillable = ['name','description'];
 
-    public function produit(){
-        return $this->belongsToMany('App\Models\Produit');
+    public function produits(){
+        return $this->belongsToMany(Produit::class);
     }
 }

@@ -7,17 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produit extends Model
 {
-    public $fillable = ['name','description','prix','categorie_id','fournisseur_id'];
+    public $fillable = ['name','description','prix','categorie_id','acteur_id'];
 
     public function categorie(){
-        return $this->belongsTo('App\Models\Categorie');
+        return $this->belongsTo(Category::class);
     }
 
     public function acteur(){
-        return $this->belongsTo('App\Models\Acteur');
+        return $this->belongsTo(Acteur::class);
     }
 
-    public function images(){
-        return $this->belongsToMany('App\Models\Image');
-    }
 }

@@ -24,9 +24,9 @@ class ImageUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => 'required|string',
-            'description' => 'required|string',
-            'produit_id' => 'required|integer',
+            'url' => 'required|image|mimes:jpg,jpeg,svg,png,gif|max:100000',
+            'description' => 'nullable'
         ];
+
     }
 }

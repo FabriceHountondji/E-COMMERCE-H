@@ -16,7 +16,7 @@ class CreateTypeReglementsTable extends Migration
         Schema::create('type_reglements', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

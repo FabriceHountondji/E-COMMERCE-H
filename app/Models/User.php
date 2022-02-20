@@ -14,7 +14,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function acteurs(){
-        return $this->belongsToMany(Acteur::class);
+    public function acteur(){
+        return $this->belongsTo(Acteur::class);
+    }
+
+    public function client(){
+        return $this->belongsTo(Acteur::class);
     }
 }

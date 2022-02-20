@@ -10,6 +10,6 @@ class TypeReglement extends Model
     public $fillable = ['name','description'];
 
     public function reglement(){
-        return $this->belongsTo('App\Models\Reglement');
+        return $this->belongsTo(Reglement::class);
     }
 }
