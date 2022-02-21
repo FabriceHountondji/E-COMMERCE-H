@@ -37,7 +37,7 @@
                     <label for="exampleSelect" class="">Catégorie</label>
                     <select name="categorie_id" id="exampleSelect" class="form-control">
                         @foreach ($categories as $categorie)
-                            <option value="{{ $categorie->id }}" {{ $produit->categorie->name == $categorie->name ? 'selected' : '' }}> {{ $categorie->name }} </option>
+                            <option value="{{ $categorie->id }}" {{ $produit->category->name == $category->name ? 'selected' : '' }}> {{ $categorie->name }} </option>
                         @endforeach
                     </select>
                 </div>

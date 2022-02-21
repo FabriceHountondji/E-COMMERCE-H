@@ -196,12 +196,12 @@
                             <td> {{ $produit->name }}</td>
                             <td> {{ $produit->description }}</td>
                             <td> {{ $produit->prix }}</td>
-                            <td>{{ $produit->categorie->name }} </td>
+                            <td>{{ $produit->category->name }} </td>
                             <td>
                                 <div class="buttons">
                                     <a href="{{ route('produits.edit', $produit) }}" class="btn btn-outline-warning">Editer</a>
                                     <a href="{{ route('produits.delete', $produit) }}" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous vraiment effectuer la suppression ?')">Supprimer</a>
-                                
+
                                 </div>
                             </td>
                         </tr>

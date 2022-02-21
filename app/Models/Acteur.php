@@ -18,8 +18,8 @@ class Acteur extends Model
     }
 
     public function produits(){
-        return $this->belongsToMany('App\Models\Produit');
+        return $this->belongsToMany(Produit::class);
     }
 
-    
+
 }
