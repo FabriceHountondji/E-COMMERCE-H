@@ -47,6 +47,15 @@ class ImageRepository
      */
     public function makeStore($data): Image{
         $image = new Image($data);
+
+        if(request()->hasFile('url')) {
+            $imageUpload = request()->file('url');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_produits/'); 
+            $imageUpload->move($imagePath, $imageName);
+            $image->url = 'storage/IMGS/imgs_produits/' . $imageName;
+        }
+
         $image->save();
         return $image;
     }
@@ -56,6 +65,16 @@ class ImageRepository
      */
     public function makeUpdate($id, $data): Image{
         $image = Image::findOrFail($id);
+
+        if(request()->hasFile('url')) {
+            $imageUpload = request()->file('url');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_produits/');    
+            $imageUpload->move($imagePath, $imageName);
+            $image->url = 'storage/IMGS/imgs_produits/' . $imageName;
+            $data['url'] = $image->url;
+        }
+
         $image->update($data);
         return $image;
     }

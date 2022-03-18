@@ -15,8 +15,8 @@ class CreateImageassociesTable extends Migration
     {
         Schema::create('imageassocies', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('question_id');
-            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('produit_id');
+            $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('image_id');
             $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

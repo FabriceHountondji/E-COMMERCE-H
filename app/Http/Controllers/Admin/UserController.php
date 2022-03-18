@@ -86,6 +86,7 @@ class UserController extends Controller
         $roles = $this->roleRepo->all();
 
         return view('users.edit',compact('role','roles','user'));
+    
     }
 
     /**
@@ -116,15 +117,15 @@ class UserController extends Controller
 
     }
 
-    public function postSecurity(ChangePasswordRequest $request)
-    {
-        if (Hash::check($request->current_password, Auth::user()->password)) {
-            $this->userRepo->makeUpdate(['password' => Hash::make($request->password)],$request->validated());
-            return back()->with('success', 'password updated succesfully');
-        } else {
-            $validator = Validator::make([], []);
-            $validator->getMessageBag()->add('current_password', 'wrong password');
-            return back()->withErrors($validator);
-        }
-    }
+    // public function postSecurity(ChangePasswordRequest $request)
+    // {
+    //     if (Hash::check($request->current_password, Auth::user()->password)) {
+    //         $this->userRepo->makeUpdate(['password' => Hash::make($request->password)],$request->validated());
+    //         return back()->with('success', 'password updated succesfully');
+    //     } else {
+    //         $validator = Validator::make([], []);
+    //         $validator->getMessageBag()->add('current_password', 'wrong password');
+    //         return back()->withErrors($validator);
+    //     }
+    // }
 }

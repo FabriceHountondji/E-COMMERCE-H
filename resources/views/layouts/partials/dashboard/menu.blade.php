@@ -111,13 +111,31 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('images.create') }}" >
                                 <i class="metismenu-icon"></i> Ajouter une image
                             </a>
                         </li>
                         <li>
-                            <a href="#" >
+                            <a href="{{ route('images.index') }}" >
                                 <i class="metismenu-icon"></i>Liste des images
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-browser"></i>Images associées
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('imageassocies.create') }}" >
+                                <i class="metismenu-icon"></i> Associer une image
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('imageassocies.index') }}" >
+                                <i class="metismenu-icon"></i>Liste des images associées
                             </a>
                         </li>
                     </ul>
@@ -136,6 +154,24 @@
                         <li>
                             <a href="{{ route('roles.index') }}" >
                                 <i class="metismenu-icon"></i>Liste des rôles
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-browser"></i>Compte utilisateur
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('users.create') }}" >
+                                <i class="metismenu-icon"></i> Ajouter un utilisateur
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('users.index') }}" >
+                                <i class="metismenu-icon"></i>Liste des utilisateurs
                             </a>
                         </li>
                     </ul>

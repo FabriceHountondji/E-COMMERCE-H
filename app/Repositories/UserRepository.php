@@ -3,7 +3,10 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\Models\User; 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class UserRepository
 {
@@ -15,7 +18,7 @@ class UserRepository
      * @var Model
      */
     protected $model;
-    
+
 
     /**
      * Constructor
@@ -47,6 +50,17 @@ class UserRepository
      */
     public function makeStore($data): User{
         $user = new User($data);
+
+        $user->password = Hash::make($data['password']);
+
+        if(request()->hasFile('photo')) {
+            $imageUpload = request()->file('photo');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_users/');
+            $imageUpload->move($imagePath, $imageName);
+            $user->photo = 'storage/IMGS/imgs_users/' .$imageName;
+        }
+
         $user->save();
         return $user;
     }
@@ -56,6 +70,16 @@ class UserRepository
      */
     public function makeUpdate($id, $data): User{
         $user = User::findOrFail($id);
+
+        if(request()->hasFile('photo')) {
+            $imageUpload = request()->file('photo');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_users/');
+            $imageUpload->move($imagePath, $imageName);
+            $user->photo = 'storage/IMGS/imgs_users/' .$imageName;
+            $data['photo'] = $user->photo;
+        }
+
         $user->update($data);
         return $user;
     }

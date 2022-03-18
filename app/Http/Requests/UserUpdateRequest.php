@@ -24,9 +24,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:acteurs',
-            'password' => 'required',
-            'user_id' => 'integer',
+            'username' => 'required|string',
+            'email' => 'required',
+            'role_id' => 'integer',
         ];
+
     }
 }

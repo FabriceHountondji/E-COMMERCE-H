@@ -101,9 +101,8 @@ class ActeurController extends Controller
     public function update(ActeurUpdateRequest $request, Acteur $acteur)
     {
         $this->acteurRepo->makeUpdate($acteur->id,$request->validated());
-        $acteurs = $this->acteurRepo->all();
 
-        return redirect()->route('acteurs.index',compact('acteurs'))->with('success', 'Acteur mis à jour');
+        return redirect()->route('acteurs.index')->with('success', 'Acteur mis à jour');
 
     }
 

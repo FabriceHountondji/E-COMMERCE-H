@@ -27,6 +27,5 @@ class ImageUpdateRequest extends FormRequest
             'url' => 'required|image|mimes:jpg,jpeg,svg,png,gif|max:100000',
             'description' => 'nullable'
         ];
-
     }
 }

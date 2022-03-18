@@ -6,7 +6,7 @@
     <div class="main-card mb-3 card">
         <div class="card-body">
             <h5 class="card-title">Formulaire de modification acteurs</h5>
-            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="{{ route('acteurs.update', $acteur->id) }}">
+            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="{{ route('acteurs.update', $acteur->id) }}" enctype="multipart/form-data">
 
                 @csrf
                 {{ method_field('PUT') }}
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="datenat">Date de naissance</label>
+                    <label for="birthday">Date de naissance</label>
                     <input type="text" class="form-control" data-toggle="datepicker-year" name="birthday" value="{{ old('birthday') ? old('birthday') : $acteur->birthday }}"/>
                 </div>
 
@@ -42,17 +42,17 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="lastname">Adresse</label>
+                    <label for="address">Adresse</label>
                     <div>
-                        <input type="text" class="form-control" id="adresse" name="address" placeholder="Adresse" value="{{ old('adresse') ? old('adresse') : $acteur->adresse }}"/>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Adresse" value="{{ old('address') ? old('address') : $acteur->address }}"/>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <div>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') ? old('email') : $acteur->email }}"/>
-                    </div>
+                <label for="exampleFile"> Profile </label>
+
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="inputGroupFile02" name="photo">
+                    <label class="input-group-text" for="inputGroupFile02">Télécharger</label>
                 </div>
 
                 <div class="position-relative form-group">
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="enregistrer" value="Enregistrer">Enregister</button>
+                    <button type="submit" class="btn btn-primary" name="enregistrer" value="Enregistrer">Enregister les modifications</button>
                 </div>
             </form>
         </div>

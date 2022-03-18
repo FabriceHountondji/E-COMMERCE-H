@@ -24,12 +24,21 @@ class ActeurUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+
             'lastname' => 'required|string',
             'firstname' => 'required|string',
-            'email' => 'required|email|unique:acteurs',
             'phone' => 'required',
             'address' => 'required',
             'sexe' => 'required',
+            'photo' => 'required|image|mimes:jpg,jpeg,svg,png,gif|max:100000',
+
+
+            'lastname' => 'required|string',
+            'firstname' => 'required|string',
+            'phone' => 'required',
+            'address' => 'required',
+            'sexe' => 'required',
+            'photo' => 'required|image|mimes:jpg,jpeg,svg,png,gif|max:100000',
             'fonction_id' => 'integer',
             'user_id' => 'integer',
             'birthday' => 'required',

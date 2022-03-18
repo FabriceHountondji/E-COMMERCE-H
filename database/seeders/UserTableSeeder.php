@@ -18,15 +18,21 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'username' => 'fab@',
                 'email' => 'fab@gmail.com',
+                'photo' => 'storage/IMGS/imgs_photos/1.png',
                 'password' => Hash::make('admin'),
                 'role_id' => '1',
             ],[
+                'username' => 'oscar@',
                 'email' => 'oscar@gmail.com',
+                'photo' => 'storage/IMGS/imgs_photos/1.png',
                 'password' => Hash::make('client1'),
                 'role_id' => '2',
             ],[
+                'username' => 'auri@',
                 'email' => 'auri@gmail.com',
+                'photo' => 'storage/IMGS/imgs_photos/1.png',
                 'password' => Hash::make('admin2'),
                 'role_id' => '1',
             ],

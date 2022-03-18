@@ -20,8 +20,8 @@ class CreateClientsTable extends Migration
             $table->string('phone');
             $table->date('birthday');
             $table->string('sexe');
+            $table->string('photo');
             $table->string('address');
-            $table->string('email');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

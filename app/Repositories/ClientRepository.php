@@ -47,6 +47,15 @@ class ClientRepository
      */
     public function makeStore($data): Client{
         $client = new Client($data);
+
+        if(request()->hasFile('photo')) {
+            $imageUpload = request()->file('photo');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_photos/'); 
+            $imageUpload->move($imagePath, $imageName);
+            $client->photo = 'storage/IMGS/imgs_photos/' . $imageName;
+        }
+
         $client->save();
         return $client;
     }
@@ -56,6 +65,16 @@ class ClientRepository
      */
     public function makeUpdate($id, $data): Client{
         $client = Client::findOrFail($id);
+
+        if(request()->hasFile('photo')) {
+            $imageUpload = request()->file('photo');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_photos/');    
+            $imageUpload->move($imagePath, $imageName);
+            $client->photo = 'storage/IMGS/imgs_photos/' . $imageName;
+            $data['photo'] = $client->photo;
+        }
+
         $client->update($data);
         return $client;
     }

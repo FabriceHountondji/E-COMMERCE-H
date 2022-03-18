@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    public $fillable = ['email','password','role_id'];
+    public $fillable = ['username','email','photo','password','role_id'];
 
     public function role(){
         return $this->belongsTo(Role::class);
@@ -18,7 +18,7 @@ class User extends Authenticatable
         return $this->belongsTo(Acteur::class);
     }
 
-    public function client(){
-        return $this->belongsTo(Acteur::class);
-    }
+    // public function client(){
+    //     return $this->belongsTo(Client::class);
+    // }
 }

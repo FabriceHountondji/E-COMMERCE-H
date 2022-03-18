@@ -20,8 +20,8 @@ class CreateActeursTable extends Migration
             $table->string('phone');
             $table->date('birthday');
             $table->string('sexe');
+            $table->string('photo');
             $table->string('address');
-            $table->string('email');
             $table->unsignedInteger('fonction_id');
             $table->foreign('fonction_id')->references('id')->on('fonctions');
             $table->unsignedInteger('user_id');

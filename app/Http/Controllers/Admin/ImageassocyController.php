@@ -2,122 +2,82 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Answerassocy;
+use App\Models\Imageassocy;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\AnswerassocyStoreRequest;
-use App\Http\Requests\AnswerassocyUpdateRequest;
+use App\Http\Requests\ImageassocyStoreRequest;
+use App\Http\Requests\ImageassocyUpdateRequest;
 
-use App\Repositories\AnswerassocyRepository;
-use App\Repositories\QuestionRepository;
-use App\Repositories\AnswerRepository;
+use App\Repositories\ImageassocyRepository;
+use App\Repositories\ProduitRepository;
+use App\Repositories\ImageRepository;
 
-class AnswerassocyController extends Controller
+class ImageassocyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-    protected $answerRepo;
-    protected $questionRepo;
-    protected $answerassocyRepo;
+    protected $imageRepo;
+    protected $produitRepo;
+    protected $imageassocyRepo;
 
-    public function __construct(AnswerRepository $answerRepo, QuestionRepository $questionRepo, AnswerassocyRepository $answerassocyRepo)
+    public function __construct(ImageRepository $imageRepo, ProduitRepository $produitRepo, ImageassocyRepository $imageassocyRepo)
     {
-        $this->answerRepo = $answerRepo;
-        $this->questionRepo = $questionRepo;
-        $this->answerassocyRepo = $answerassocyRepo;
+        $this->imageRepo = $imageRepo;
+        $this->produitRepo = $produitRepo;
+        $this->imageassocyRepo = $imageassocyRepo;
     }
 
     public function index()
     {
-        $answerassocies = $this->answerassocyRepo->getlatest();
-        return view('answerassocies.index', compact('answerassocies'));
-    
+        $imageassocies = $this->imageassocyRepo->getlatest();
+        return view('imageassocies.index', compact('imageassocies'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $answers = $this->answerRepo->getlatest();
-        $questions = $this->questionRepo->getlatest();
-        return view('answerassocies.create',compact('answers','questions'));
-    
+        $images = $this->imageRepo->getlatest();
+        $produits = $this->produitRepo->getlatest();
+        return view('imageassocies.create',compact('images','produits'));
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(AnswerassocyStoreRequest $request)
+    public function store(ImageassocyStoreRequest $request)
     {
-        $answerassocy = $this->answerassocyRepo->makeStore($request->validated());
-        return redirect()->route('answerassocies.index')->with('success', 'Réponse associée à cette question avec succès');
-    
+        $this->imageassocyRepo->makeStore($request->validated());
+        return redirect()->route('imageassocies.index')->with('success', 'Image associée à ce produit avec succès');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Answerassocy  $answerassocy
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Answerassocy $answerassocy)
+
+    public function show(Imageassocy $imageassocy)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Answerassocy  $answerassocy
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Answerassocy $answerassocy)
+    public function edit(Imageassocy $imageassocy)
     {
-        $answer = $this->answerRepo->find($answerassocy->answer->id);
-        $question = $this->questionRepo->find($answerassocy->question->id);
-        $answerassocy = $this->answerassocyRepo->find($answerassocy->id);
-        
+        $image = $this->imageRepo->find($imageassocy->image->id);
+        $produit = $this->produitRepo->find($imageassocy->produit->id);
+        $imageassocy = $this->imageassocyRepo->find($imageassocy->id);
+
         $answers = $this->answerRepo->all();
-        $questions = $this->questionRepo->all();
+        $produits = $this->produitRepo->all();
 
-        return view('answerassocies.edit',compact('answer','answers','question','questions','answerassocy'));
-    
+        return view('imageassocies.edit',compact('image','images','produit','produits','imageassocy'));
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Answerassocy  $answerassocy
-     * @return \Illuminate\Http\Response
-     */
-    public function update(AnswerassocyUpdateRequest $request, Answerassocy $answerassocy)
+    public function update(ImageassocyUpdateRequest $request, Imageassocy $imageassocy)
     {
-        $this->answerassocyRepo->makeUpdate($answerassocy->id,$request->validated());
-        return redirect()->route('answerassocies.index')->with('success', 'Réponse associée à cette question mise à jour avec succès');
-    
+        $this->imageassocyRepo->makeUpdate($imageassocy->id,$request->validated());
+        return redirect()->route('imageassocies.index')->with('success', 'Image associée à ce produit mis à jour avec succès');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Answerassocy  $answerassocy
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Answerassocy $answerassocy)
+    public function destroy(Imageassocy $imageassocy)
     {
-        $answerassocy->delete();
-        return redirect()->route('answerassocies.index')->with('success','Réponse associée à cette question supprimée avec succès');
-    
+        $imageassocy->delete();
+        return redirect()->route('imageassocies.index')->with('success','Image associée à ce produit supprimée avec succès');
+
     }
 }

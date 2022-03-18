@@ -1,9 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+
+use App\Http\Requests\ClientStoreRequest;
+use App\Http\Requests\ClientUpdateRequest;
+
+use App\Repositories\ClientRepository;
+use App\Repositories\UserRepository;
+
 
 class ClientController extends Controller
 {
@@ -12,9 +19,20 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $clientRepo;
+    protected $userRepo;
+
+    public function __construct(ClientRepository $clientRepo, UserRepository $userRepo)
+    {
+        $this->clientRepo = $clientRepo;
+        $this->userRepo = $userRepo;
+    }
+
     public function index()
     {
-        //
+        $clients = $this->clientRepo->getlatest();
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -24,7 +42,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        $users = $this->userRepo->getlatest();
+        return view('clients.create',compact('users'));
     }
 
     /**
@@ -33,9 +52,12 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientStoreRequest $request)
     {
-        //
+        $client = $this->clientRepo->makeStore($request->validated());
+
+        return redirect()->route('clients.index')->with('success','Client enregistré avec succès.');
+
     }
 
     /**
@@ -57,7 +79,12 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        $user = $this->userRepo->find($client->user->id);
+        $client = $this->clientRepo->find($client->id);
+        $users = $this->userRepo->all();
+
+        return view('acteurs.edit',compact('client','user','users'));
+
     }
 
     /**
@@ -67,9 +94,13 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientUpdateRequest $request, Client $client)
     {
-        //
+        $this->clientRepo->makeUpdate($client->id,$request->validated());
+        $clients = $this->clientRepo->all();
+
+        return redirect()->route('clients.index',compact('clients'))->with('success', 'Client mis à jour');
+
     }
 
     /**
@@ -80,6 +111,9 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+
+        return redirect()->route('clients.index')->with('success','Client supprimé avec succès');
+
     }
 }

@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('master')
 
 @section('content')
 
@@ -191,7 +191,7 @@
                         <tr>
                             <td>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" id="photos" src="{{ asset($image->url) }}">
+                                <img class="rounded-circle" id="photos" src="{{ asset($image->url) }}">
                             </div>
                             </td>
                             <td>{{ $image->url }} </td>

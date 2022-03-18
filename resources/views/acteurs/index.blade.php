@@ -193,10 +193,15 @@
                 <tbody>
                     @foreach($acteurs as $index => $acteur)
                         <tr>
-                            <td>{{ $acteur->firstname }} </td>
+                            <td>
+                                <div class="widget-user-image">
+                                    <img class="rounded-circle img-circle elevation-2 " id="photos" src="{{ asset($acteur->photo) }}">
+                                </div>
+                            </td>
+
                             <td> {{ $acteur->firstname }}</td>
                             <td> {{ $acteur->lastname }}</td>
-                            <td> {{ $acteur->email }}</td>
+                            <td> {{ $acteur->user->email }}</td>
                             <td>{{ $acteur->fonction->name }} </td>
                             <td>
                                 <div class="buttons">

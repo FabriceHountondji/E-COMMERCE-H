@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Traits\Repository;
-use App\Models\Acteur; 
+use App\Models\Acteur;
 
 class ActeurRepository
 {
@@ -15,7 +15,7 @@ class ActeurRepository
      * @var Model
      */
     protected $model;
-    
+
 
     /**
      * Constructor
@@ -47,6 +47,16 @@ class ActeurRepository
      */
     public function makeStore($data): Acteur{
         $acteur = new Acteur($data);
+
+
+        if(request()->hasFile('photo')) {
+            $imageUpload = request()->file('photo');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_photos/');
+            $imageUpload->move($imagePath, $imageName);
+            $acteur->photo = 'storage/IMGS/imgs_photos/' .$imageName;
+        }
+
         $acteur->save();
         return $acteur;
     }
@@ -56,6 +66,16 @@ class ActeurRepository
      */
     public function makeUpdate($id, $data): Acteur{
         $acteur = Acteur::findOrFail($id);
+
+        if(request()->hasFile('photo')) {
+            $imageUpload = request()->file('photo');
+            $imageName = time() .'.'. $imageUpload->getClientOriginalExtension();
+            $imagePath = public_path('storage/IMGS/imgs_photos/');
+            $imageUpload->move($imagePath, $imageName);
+            $acteur->photo = 'storage/IMGS/imgs_photos/' .$imageName;
+            $data['photo'] = $acteur->photo;
+        }
+
         $acteur->update($data);
         return $acteur;
     }

@@ -22,11 +22,10 @@ class ImageStoreRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {     
         return [
             'url' => 'required|image|mimes:jpg,jpeg,svg,png,gif|max:100000',
             'description' => 'nullable'
         ];
-
     }
 }

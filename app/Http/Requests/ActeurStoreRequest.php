@@ -26,9 +26,9 @@ class ActeurStoreRequest extends FormRequest
         return [
             'lastname' => 'required|string',
             'firstname' => 'required|string',
-            'email' => 'required|email|unique:acteurs',
             'phone' => 'required',
             'address' => 'required',
+            'photo' => 'required|image|mimes:jpg,jpeg,svg,png,gif|max:100000',
             'sexe' => 'required',
             'fonction_id' => 'integer',
             'user_id' => 'integer',
